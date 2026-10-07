@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Antioquia Viva Turismo</title>
+
+    <meta name="description"
+          content="Descubre Antioquia, sus paisajes, cultura, gastronomía y experiencias con Antioquia Viva Turismo.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        /* =========================
+           NAVEGACIÓN
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #176b3a;
+        }
+
+        .logo span {
+            color: #d99a00;
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #176b3a;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #176b3a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0e4d29;
+            transform: translateY(-2px);
+        }
+
+        .btn-yellow {
+            background: #e5a900;
+            color: #222;
+        }
+
+        .btn-yellow:hover {
+            background: #c89000;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(0,70,40,0.65),
+                    rgba(0,40,25,0.75)
+                ),
+                url("https://images.unsplash.com/photo-1596395819057-e37f55a8516a?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 75px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ffd34d;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #176b3a;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* =========================
+           DESTINOS
+        ========================= */
+
+        .destinations {
+            background: #f7f9f6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+        }
+
+        .card-image {
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card-content h3 {
+            color: #176b3a;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* =========================
+           EXPERIENCIAS
+        ========================= */
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .experience {
+            padding: 35px 25px;
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .experience:hover {
+            border-color: #176b3a;
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .experience h3 {
+            color: #176b3a;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           GASTRONOMÍA
+        ========================= */
+
+        .food {
+            background: #fff8e7;
+        }
+
+        .food-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .food-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .food-text h2 {
+            font-size: 38px;
+            color: #176b3a;
+            margin-bottom: 20px;
+        }
+
+        .food-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .food-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* =========================
+           PAQUETES
+        ========================= */
+
+        .packages {
+            background: #f7f9f6;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .package {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .package h3 {
+            color: #176b3a;
+            font-size: 24px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #d38e00;
+            margin: 15px 0;
+        }
+
+        .package ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .package li {
+            margin: 8px 0;
+        }
+
+        /* =========================
+           TESTIMONIOS
+        ========================= */
+
+        .testimonials {
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: #f7f9f6;
+            padding: 30px;
+            border-radius: 18px;
+        }
+
+        .stars {
+            color: #e5a900;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        .contact {
+            background: #176b3a;
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title p {
+            color: #e2eee6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            padding: 20px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0d3520;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            color: #c9d8ce;
+        }
+
+        .social {
+            margin: 20px 0;
+        }
+
+        .social a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        .whatsapp {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25d366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+            z-index: 999;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-grid,
+            .package-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 15px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            Antioquia <span>Viva</span>
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="#inicio">Inicio</a>
+            </li>
+
+            <li>
+                <a href="#destinos">Destinos</a>
+            </li>
+
+            <li>
+                <a href="#experiencias">Experiencias</a>
+            </li>
+
+            <li>
+                <a href="#gastronomia">Gastronomía</a>
+            </li>
+
+            <li>
+                <a href="#contacto">Contacto</a>
+            </li>
+
+        </ul>
+
+        <a href="#contacto" class="btn btn-primary">
+            Reserva ahora
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>
+            Descubre el corazón de
+            <span>Antioquia</span>
+        </h1>
+
+        <p>
+            Vive paisajes increíbles, cultura, gastronomía
+            y experiencias auténticas en compañía de expertos locales.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#destinos" class="btn btn-yellow">
+                Explorar destinos
+            </a>
+
+            <a href="#contacto" class="btn btn-primary">
+                Planear mi viaje
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DESTINOS
+========================= -->
+
+<section class="destinations" id="destinos">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Destinos imperdibles</h2>
+
+            <p>
+                Conoce algunos de los lugares más representativos
+                y encantadores de Antioquia.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1596395819057-e37f55a8516a?auto=format&fit=crop&w=800&q=80"
+                        alt="Medellín"
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Medellín</h3>
+
+                    <p>
+                        La ciudad de la eterna primavera.
+                        Cultura, innovación, arte y gastronomía.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1578496480157-697fc14d2f19?auto=format&fit=crop&w=800&q=80"
+                        alt="Guatapé"
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Guatapé</h3>
+
+                    <p>
+                        Descubre la Piedra del Peñol,
+                        sus coloridas calles y el embalse.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+                        alt="Jardín Antioquia"
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Jardín</h3>
+
+                    <p>
+                        Naturaleza, arquitectura colonial,
+                        café y experiencias rurales.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+                        alt="Santa Fe de Antioquia"
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Santa Fe de Antioquia</h3>
+
+                    <p>
+                        Historia, arquitectura colonial,
+                        tradición y clima cálido.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCIAS
+========================= -->
+
+<section id="experiencias">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Experiencias que recordarás</h2>
+
+            <p>
+                Diseñamos experiencias para que conozcas
+                Antioquia de una manera auténtica.
+            </p>
+
+        </div>
+
+
+        <div class="experience-grid">
+
+
+            <div class="experience">
+
+                <div class="icon">🏔️</div>
+
+                <h3>Aventura</h3>
+
+                <p>
+                    Senderismo, naturaleza, montañas,
+                    ríos y actividades al aire libre.
+                </p>
+
+            </div>
+
+
+            <div class="experience">
+
+                <div class="icon">☕</div>
+
+                <h3>Ruta del café</h3>
+
+                <p>
+                    Conoce el proceso del café y
+                    disfruta una taza directamente en origen.
+                </p>
+
+            </div>
+
+
+            <div class="experience">
+
+                <div class="icon">🎭</div>
+
+                <h3>Cultura</h3>
+
+                <p>
+                    Historia, tradiciones, arquitectura,
+                    música y cultura antioqueña.
+                </p>
+
+            </div>
+
+
+            <div class="experience">
+
+                <div class="icon">🍲</div>
+
+                <h3>Gastronomía</h3>
+
+                <p>
+                    Descubre los sabores tradicionales
+                    de la cocina antioqueña.
+                </p>
+
+            </div>
+
+
+            <div class="experience">
+
+                <div class="icon">🌿</div>
+
+                <h3>Naturaleza</h3>
+
+                <p>
+                    Paisajes verdes, cascadas,
+                    reservas naturales y pueblos.
+                </p>
+
+            </div>
+
+
+            <div class="experience">
+
+                <div class="icon">📸</div>
+
+                <h3>Fotografía</h3>
+
+                <p>
+                    Recorridos por los lugares
+                    más fotogénicos de Antioquia.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GASTRONOMÍA
+========================= -->
+
+<section class="food" id="gastronomia">
+
+    <div class="container">
+
+        <div class="food-content">
+
+            <div class="food-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=80"
+                    alt="Gastronomía"
+                >
+
+            </div>
+
+
+            <div class="food-text">
+
+                <h2>
+                    Sabores de Antioquia
+                </h2>
+
+                <p>
+                    Viajar también significa descubrir los sabores
+                    de cada región. En Antioquia queremos que
+                    conozcas nuestra gastronomía tradicional.
+                </p>
+
+                <ul class="food-list">
+
+                    <li>🍲 Bandeja paisa</li>
+
+                    <li>🥣 Sopa de mondongo</li>
+
+                    <li>🫓 Arepa antioqueña</li>
+
+                    <li>🥩 Carne en polvo</li>
+
+                    <li>☕ Café de origen</li>
+
+                    <li>🍬 Dulces tradicionales</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAQUETES
+========================= -->
+
+<section class="packages">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Paquetes turísticos</h2>
+
+            <p>
+                Elige la experiencia que más se adapte
+                a tu próxima aventura.
+            </p>
+
+        </div>
+
+
+        <div class="package-grid">
+
+
+            <div class="package">
+
+                <h3>Escapada Paisa</h3>
+
+                <div class="price">
+                    $350.000
+                </div>
+
+                <p>Por persona</p>
+
+                <ul>
+
+                    <li>✓ Tour por Medellín</li>
+
+                    <li>✓ Guía local</li>
+
+                    <li>✓ Experiencia gastronómica</li>
+
+                    <li>✓ Transporte</li>
+
+                </ul>
+
+                <a href="#contacto"
+                   class="btn btn-primary">
+                    Reservar
+                </a>
+
+            </div>
+
+
+            <div class="package">
+
+                <h3>Guatapé Aventura</h3>
+
+                <div class="price">
+                    $420.000
+                </div>
+
+                <p>Por persona</p>
+
+                <ul>
+
+                    <li>✓ Piedra del Peñol</li>
+
+                    <li>✓ Tour por Guatapé</li>
+
+                    <li>✓ Embalse</li>
+
+                    <li>✓ Transporte</li>
+
+                </ul>
+
+                <a href="#contacto"
+                   class="btn btn-primary">
+                    Reservar
+                </a>
+
+            </div>
+
+
+            <div class="package">
+
+                <h3>Antioquia Cultural</h3>
+
+                <div class="price">
+                    $650.000
+                </div>
+
+                <p>Por persona</p>
+
+                <ul>
+
+                    <li>✓ Jardín</li>
+
+                    <li>✓ Santa Fe de Antioquia</li>
+
+                    <li>✓ Experiencias culturales</li>
+
+                    <li>✓ Guía especializado</li>
+
+                </ul>
+
+                <a href="#contacto"
+                   class="btn btn-primary">
+                    Reservar
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TESTIMONIOS
+========================= -->
+
+<section class="testimonials">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Lo que dicen nuestros viajeros</h2>
+
+        </div>
+
+
+        <div class="testimonial-grid">
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Una experiencia increíble.
+                    El guía conocía cada rincón de Guatapé."
+                </p>
+
+                <strong>
+                    — Laura M.
+                </strong>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "La experiencia gastronómica fue
+                    una de las mejores partes del viaje."
+                </p>
+
+                <strong>
+                    — Carlos R.
+                </strong>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Excelente organización.
+                    Volvería a viajar con Antioquia Viva."
+                </p>
+
+                <strong>
+                    — María P.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTO
+========================= -->
+
+<section class="contact" id="contacto">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Planea tu próxima aventura</h2>
+
+            <p>
+                Cuéntanos qué experiencia estás buscando
+                y nosotros te ayudaremos a diseñarla.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-info">
+
+                <h3>
+                    Antioquia te está esperando
+                </h3>
+
+                <p>
+                    📍 Medellín, Antioquia, Colombia
+                </p>
+
+                <p>
+                    📞 +57 300 000 0000
+                </p>
+
+                <p>
+                    ✉️ contacto@antioquiaviva.com
+                </p>
+
+                <p>
+                    🕐 Lunes a sábado: 8:00 a.m. – 6:00 p.m.
+                </p>
+
+                <br>
+
+                <p>
+                    Síguenos y descubre diariamente nuevos
+                    lugares para conocer en Antioquia.
+                </p>
+
+            </div>
+
+
+            <form
+                onsubmit="enviarFormulario(event)"
+            >
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Nombre completo"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Correo electrónico"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="telefono"
+                    placeholder="Número de contacto"
+                    required
+                >
+
+                <select id="destino" required>
+
+                    <option value="">
+                        ¿Qué destino te interesa?
+                    </option>
+
+                    <option>
+                        Medellín
+                    </option>
+
+                    <option>
+                        Guatapé
+                    </option>
+
+                    <option>
+                        Jardín
+                    </option>
+
+                    <option>
+                        Santa Fe de Antioquia
+                    </option>
+
+                    <option>
+                        Otro destino
+                    </option>
+
+                </select>
+
+                <textarea
+                    id="mensaje"
+                    placeholder="Cuéntanos qué estás buscando..."
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Enviar solicitud
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="logo">
+        Antioquia <span>Viva</span>
+    </div>
+
+    <div class="social">
+
+        <a href="#">Instagram</a>
+
+        <a href="#">Facebook</a>
+
+        <a href="#">TikTok</a>
+
+    </div>
+
+    <p>
+        © 2026 Antioquia Viva Turismo.
+        Todos los derechos reservados.
+    </p>
+
+    <p>
+        Turismo responsable • Cultura • Naturaleza • Experiencias
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/573000000000"
+    target="_blank"
+    title="Escríbenos por WhatsApp"
+>
+    ☎
+</a>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    function enviarFormulario(event) {
+
+        event.preventDefault();
+
+        const nombre =
+            document.getElementById("nombre").value;
+
+        const destino =
+            document.getElementById("destino").value;
+
+        alert(
+            "¡Gracias, " +
+            nombre +
+            "! Hemos recibido tu solicitud para conocer " +
+            destino +
+            "."
+        );
+
+    }
+
+</script>
+
+
+</body>
+</html>
